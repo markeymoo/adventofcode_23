@@ -2,6 +2,28 @@ import re
 import logging
 
 
+def convertToDigits(line: str):
+    line = re.sub(r"(?:oneight)", "oneeight", line, 0)
+    line = re.sub(r"(?:threeight)", "threeeight", line, 0)
+    line = re.sub(r"(?:fiveeight)", "fiveeight", line, 0)
+    line = re.sub(r"(?:nineight)", "nineeight", line, 0)
+    line = re.sub(r"(?:twone)", "twoone", line, 0)
+    line = re.sub(r"(?:sevenine)", "sevennine", line, 0)
+    line = re.sub(r"(?:eightwo)", "eighttwo", line, 0)
+
+    line = re.sub(r"(?:one)", "1", line, 0)
+    line = re.sub(r"(?:two)", "2", line, 0)
+    line = re.sub(r"(?:three)", "3", line, 0)
+    line = re.sub(r"(?:four)", "4", line, 0)
+    line = re.sub(r"(?:five)", "5", line, 0)
+    line = re.sub(r"(?:six)", "6", line, 0)
+    line = re.sub(r"(?:seven)", "7", line, 0)
+    line = re.sub(r"(?:eight)", "8", line, 0)
+    line = re.sub(r"(?:nine)", "9", line, 0)
+
+    return line
+
+
 def createCalibrationValue(digit1: str, digit2: str):
     combinedStr = digit1 + digit2
     logging.info("Combined String: %s", combinedStr)
@@ -39,6 +61,8 @@ def main():
         first_digit = ""
         last_digit = ""
 
+        logging.info("Line To Process: %s", line)
+        line = convertToDigits(line)
         logging.info("Line To Process: %s", line)
 
         # search line for first number character
