@@ -3,7 +3,7 @@ import logging
 
 
 def convert_to_digits(line: str):
-    line = line.replace("oneight", "oneeight") 
+    line = line.replace("oneight", "oneeight")
     line = line.replace("threeight", "threeeight")
     line = line.replace("fiveeight", "fiveeight")
     line = line.replace("nineight", "nineeight")
@@ -12,7 +12,7 @@ def convert_to_digits(line: str):
     line = line.replace("eightwo", "eighttwo")
 
     line = line.replace("one", "1")
-    line = line.replace("two", "2") 
+    line = line.replace("two", "2")
     line = line.replace("three", "3")
     line = line.replace("four", "4")
     line = line.replace("five", "5")
@@ -24,9 +24,6 @@ def convert_to_digits(line: str):
     return line
 
 
-
-
-
 def create_calibration_value(digit1: str, digit2: str):
     combined_string = digit1 + digit2
     logging.info("Combined String: %s", combined_string)
@@ -34,8 +31,6 @@ def create_calibration_value(digit1: str, digit2: str):
     logging.info("Combined Int: %d", calibrated_value)
 
     return calibrated_value
-
-
 
 
 def read_data(file_name: str):
@@ -47,7 +42,6 @@ def read_data(file_name: str):
     return lines
 
 
-
 def init():
     # configure logging
     logging.basicConfig()
@@ -55,7 +49,6 @@ def init():
 
     global calibration_value
     calibration_value = 0
-
 
 
 def main():
@@ -75,7 +68,6 @@ def main():
         match = re.findall(r"\d", line)
         logging.info("Matched Digits: %s", match)
 
-        
         first_digit = match[0]
 
         if len(match) == 1:
@@ -90,8 +82,6 @@ def main():
         calibration_value += createCalibrationValue(first_digit, last_digit)
 
         logging.info("CalibrationValue: %d", calibration_value)
-
-
 
 
 if __name__ == "__main__":
